@@ -5,20 +5,25 @@ import (
 	"strconv"
 )
 
-func main()  {
+var (
+	s = "1,1,"
+)
 
-	a := 0
-	b := 1
-	s := "打印开始："
-	for i := 1;i < 20;i++{
+func Fibonacci(a, b, num, strnum int) {
 
-		c := b + a
-		a = b
-		b = c
-		s += strconv.Itoa(c) + ","
+	a, b = b, (a + b)
+	s += strconv.Itoa(b) + ","
+
+	strnum++
+	if strnum < num {
+		Fibonacci(a, b, num, strnum)
 	}
+}
 
+func main() {
+	//下面做了一个简单的斐波那契数列算法
+
+	Fibonacci(1, 1, 10, 0)
 	fmt.Println(s)
-
 
 }
